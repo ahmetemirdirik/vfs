@@ -31,7 +31,7 @@
 
   /* ---------- scatter (Figure 2) ---------- */
   function scatterPanel(cell, spec, data) {
-    const W = Math.max(220, Math.floor(cell.clientWidth)), H = 236;
+    const W = Math.max(220, Math.floor(cell.clientWidth)), H = window.innerWidth <= 520 ? 190 : 236;
     const m = { l: 40, r: 6, t: 30, b: 28 };
     const pw = W - m.l - m.r, ph = H - m.t - m.b, gw = pw / GROUPS.length;
     const y = (v) => m.t + (1 - (v - spec.lo) / (spec.hi - spec.lo)) * ph;
@@ -70,8 +70,8 @@
   function drawAUC() {
     const box = document.getElementById("auc");
     if (!box) return;
-    const W = Math.max(280, Math.floor(box.clientWidth)), row = W < 520 ? 46 : 38;
-    const m = { l: W < 520 ? 74 : 96, r: 46, t: 8, b: 34 };
+    const W = Math.max(280, Math.floor(box.clientWidth)), row = 46;
+    const m = { l: W < 520 ? 74 : 96, r: 46, t: 12, b: 34 };
     const H = m.t + AUC.length * row + m.b, pw = W - m.l - m.r;
     const lo = 0.3, hi = 1.0, x = (v) => m.l + ((v - lo) / (hi - lo)) * pw;
     const svg = el("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "AUC of VFS and raw NR-IQA scores for each metric" });
@@ -85,9 +85,8 @@
       svg.appendChild(el("text", { x: m.l - 12, y: cy + 4, "text-anchor": "end", "font-family": FONT, "font-size": 13, "font-weight": 500, fill: C.fg }, name));
       svg.appendChild(el("line", { x1: x(r), x2: x(v), y1: cy, y2: cy, stroke: "#e7c9d4", "stroke-width": 3 }));
       svg.appendChild(el("circle", { cx: x(r), cy, r: 6.5, fill: "#fff", stroke: "#9aa1ac", "stroke-width": 2 }));
-      svg.appendChild(narrow
-        ? el("text", { x: x(r), y: cy - 10, "text-anchor": "middle", "font-family": MONO, "font-size": 11, fill: C.muted }, r.toFixed(2))
-        : el("text", { x: x(r) - 12, y: cy + 4, "text-anchor": "end", "font-family": MONO, "font-size": 12, fill: C.muted }, r.toFixed(2)));
+      // raw-score label sits above its dot, clear of the dashed chance line
+      svg.appendChild(el("text", { x: x(r), y: cy - 11, "text-anchor": "middle", "font-family": MONO, "font-size": 11, fill: C.muted, stroke: "#fff", "stroke-width": 3, "paint-order": "stroke" }, r.toFixed(2)));
       svg.appendChild(el("circle", { cx: x(v), cy, r: 7, fill: "#9b1d4a" }));
       svg.appendChild(el("text", { x: x(v) + 12, y: cy + 4, "font-family": MONO, "font-size": 12, "font-weight": 600, fill: "#9b1d4a" }, v.toFixed(2)));
     });
