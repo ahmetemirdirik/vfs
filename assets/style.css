@@ -49,14 +49,17 @@ p { margin: 0; }
 .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; max-width: 19ch; }
 .hero h1 em { color: var(--accent); }
 .authors { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 24px; font-size: 1.05rem; color: var(--fg); }
-.authors a.author { display: inline-flex; align-items: center; gap: 0; color: var(--fg); text-decoration: none; }
-.authors a.author svg { width: 14px; height: 14px; margin-left: 6px; color: #0a66c2; opacity: .85; transition: opacity .15s; }
-.authors a.author svg.web { color: var(--muted); }
-.authors a.author:hover { text-decoration: underline; text-decoration-color: var(--line-strong); }
-.authors a.author:hover svg { opacity: 1; }
+.authors .author { display: inline-flex; align-items: center; color: var(--fg); }
+.authors .ic { display: inline-flex; margin-left: 6px; color: #0a66c2; opacity: .8; transition: opacity .15s; }
+.authors .ic + .ic { margin-left: 5px; }
+.authors .ic.web { color: var(--muted); }
+.authors .ic:hover { opacity: 1; }
+.authors .ic svg { width: 14px; height: 14px; display: block; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .authors sup, .affil sup { color: var(--muted); font-size: .65em; }
 .affil { display: grid; gap: 1px; font-size: 0.86rem; color: var(--muted); }
+.affil a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); }
+.affil a:hover { color: var(--fg); text-decoration-color: currentColor; }
 .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 0.88rem var(--f-body); padding: 9px 18px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line-strong); color: var(--fg); background: #fff; cursor: pointer; transition: border-color .15s, background .15s; }
 .btn:hover { border-color: var(--fg); }
