@@ -76,7 +76,7 @@ section { padding-top: 76px; }
 .w-full a { max-width: 100%; }
 .w-set  a { max-width: 540px; }
 .w-mid  a { max-width: 620px; }
-figcaption { font-size: 0.86rem; color: var(--muted); line-height: 1.55; border-top: 1px solid var(--line); padding-top: 14px; }
+figcaption { font-size: 0.9rem; color: #363b43; line-height: 1.6; border-top: 1px solid var(--line); padding-top: 14px; }
 figcaption b { color: var(--fg); font-weight: 600; }
 @media (max-width: 640px) { .panel { padding: 16px 14px 14px; border-radius: 12px; } }
 
