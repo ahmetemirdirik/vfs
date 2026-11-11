@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="tr" data-lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#ffffff">
+<title>Video Fidelity Score (VFS): Deepfake Görsel Gerçekçiliği</title>
+<meta name="description" content="Video Fidelity Score (VFS), her deepfake videonun ne kadar gerçekçi göründüğünü görüntü kalitesi skorları ve Cohen's d ile ölçer. Makale, kod, şekiller ve sonuçlar.">
+<meta name="author" content="Ahmet Demir, Ahmet Emir Dirik, Saffet Vatansever">
+<meta name="keywords" content="deepfake, visual realism, video fidelity score, VFS, image quality assessment, NR-IQA, FaceForensics++, Celeb-DF, FaceShifter">
+<meta name="msvalidate.01" content="E38A79CFFF8156E7CA21AD8A347EDA2A">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ahmetemirdirik.github.io/vfs/tr/">
+<link rel="alternate" hreflang="en" href="https://ahmetemirdirik.github.io/vfs/">
+<link rel="alternate" hreflang="tr" href="https://ahmetemirdirik.github.io/vfs/tr/">
+<link rel="alternate" hreflang="x-default" href="https://ahmetemirdirik.github.io/vfs/">
+<link rel="sitemap" type="application/xml" href="../sitemap.xml">
+<!-- Social cards -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Video Fidelity Score (VFS)">
+<meta property="og:url" content="https://ahmetemirdirik.github.io/vfs/tr/">
+<meta property="og:title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
+<meta property="og:description" content="Video Fidelity Score (VFS), her deepfake videonun ne kadar gerçekçi göründüğünü görüntü kalitesi skorları ve Cohen's d ile ölçer. Makale, kod, şekiller ve sonuçlar.">
+<meta property="og:image" content="https://ahmetemirdirik.github.io/vfs/assets/img/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Paper title and authors above a pristine face and four deepfake versions with their VFS scores.">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="article:published_time" content="2026-05-22">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
+<meta name="twitter:description" content="Video Fidelity Score (VFS), her deepfake videonun ne kadar gerçekçi göründüğünü görüntü kalitesi skorları ve Cohen's d ile ölçer. Makale, kod, şekiller ve sonuçlar.">
+<meta name="twitter:image" content="https://ahmetemirdirik.github.io/vfs/assets/img/social-card.jpg">
+<!-- Google Scholar -->
+<meta name="citation_title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
+<meta name="citation_author" content="Demir, Ahmet">
+<meta name="citation_author_institution" content="Bursa Uludağ University">
+<meta name="citation_author" content="Dirik, Ahmet Emir">
+<meta name="citation_author_institution" content="Bursa Uludağ University">
+<meta name="citation_author" content="Vatansever, Saffet">
+<meta name="citation_author_institution" content="Bursa Technical University">
+<meta name="citation_journal_title" content="PeerJ Computer Science">
+<meta name="citation_issn" content="2376-5992">
+<meta name="citation_volume" content="12">
+<meta name="citation_firstpage" content="e3893">
+<meta name="citation_publication_date" content="2026/05/22">
+<meta name="citation_doi" content="10.7717/peerj-cs.3893">
+<meta name="citation_abstract_html_url" content="https://peerj.com/articles/cs-3893/">
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ScholarlyArticle",
+ "headline": "Assessing the visual realism of deepfake videos: an IQA-based approach",
+ "name": "Assessing the visual realism of deepfake videos: an IQA-based approach",
+ "alternativeHeadline": "Video Fidelity Score (VFS)",
+ "description": "Project page for a PeerJ Computer Science (2026) paper introducing the Video Fidelity Score (VFS), an annotation-free, per-video measure of how realistic a deepfake video looks compared with its source video, based on no-reference image quality assessment (NR-IQA) scores and Cohen's d.",
+ "url": "https://ahmetemirdirik.github.io/vfs/",
+ "image": "https://ahmetemirdirik.github.io/vfs/assets/img/overview.png",
+ "datePublished": "2026-05-22",
+ "inLanguage": "en",
+ "keywords": [
+  "deepfake",
+  "visual realism",
+  "video fidelity score",
+  "VFS",
+  "image quality assessment",
+  "NR-IQA",
+  "FaceForensics++",
+  "Celeb-DF",
+  "FaceShifter",
+  "FID"
+ ],
+ "author": [
+  {
+   "@type": "Person",
+   "name": "Ahmet Demir",
+   "url": "https://avesis.uludag.edu.tr/ahmetdemir",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Uludağ University",
+    "url": "https://uludag.edu.tr"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Ahmet Emir Dirik",
+   "url": "https://avesis.uludag.edu.tr/edirik",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Uludağ University",
+    "url": "https://uludag.edu.tr"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Saffet Vatansever",
+   "url": "https://sayfam.btu.edu.tr/en/saffet.vatansever",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Technical University",
+    "url": "https://btu.edu.tr"
+   }
+  }
+ ],
+ "isPartOf": {
+  "@type": "PublicationVolume",
+  "volumeNumber": "12",
+  "isPartOf": {
+   "@type": "Periodical",
+   "name": "PeerJ Computer Science",
+   "issn": "2376-5992"
+  }
+ },
+ "pagination": "e3893",
+ "identifier": {
+  "@type": "PropertyValue",
+  "propertyID": "DOI",
+  "value": "10.7717/peerj-cs.3893"
+ },
+ "sameAs": [
+  "https://doi.org/10.7717/peerj-cs.3893",
+  "https://peerj.com/articles/cs-3893/"
+ ],
+ "license": "https://creativecommons.org/licenses/by/4.0/"
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "VFS: Video Fidelity Score", "codeRepository": "https://github.com/aahmetdemir/VFS", "programmingLanguage": ["MATLAB", "Python"], "license": "https://opensource.org/licenses/MIT", "url": "https://github.com/aahmetdemir/VFS"}
+</script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=20261111204253">
+<script>if (new URLSearchParams(location.search).get("lang") === "en") location.replace("../");</script>
+</head>
+<body>
+<div class="top">
+  <div class="col">
+    <a class="brand" href="#"><b>VFS:</b> Video Fidelity Score</a>
+    <nav class="lang" aria-label="Language"><a href="./" aria-current="page">TR</a><a href="../" hreflang="en">EN</a></nav>
+  </div>
+</div>
+<main>
+  <header class="col hero">
+    <span class="label venue"><b></b>PeerJ Computer Science · 2026<b></b></span>
+    <h1>Assessing the visual realism of <em>deepfake</em> videos: an IQA-based approach</h1>
+    <div class="authors">
+      <a class="author" href="https://avesis.uludag.edu.tr/ahmetdemir" target="_blank" rel="noopener">Ahmet Demir<sup>1</sup></a>
+      <a class="author" href="https://avesis.uludag.edu.tr/edirik" target="_blank" rel="noopener">Ahmet Emir Dirik<sup>2</sup></a>
+      <a class="author" href="https://sayfam.btu.edu.tr/en/saffet.vatansever" target="_blank" rel="noopener">Saffet Vatansever<sup>3</sup></a>
+    </div>
+    <div class="affil">
+      <span lang="tr"><sup>1</sup> Elektrik-Elektronik Mühendisliği, Bursa Uludağ Üniversitesi &nbsp; <sup>2</sup> Bilgisayar Mühendisliği, Bursa Uludağ Üniversitesi</span>
+      <span lang="tr"><sup>3</sup> Mekatronik Mühendisliği, Bursa Teknik Üniversitesi</span>
+    </div>
+    <div class="links">
+      <a class="btn primary" href="https://peerj.com/articles/cs-3893/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6.5 8.5h4M6.5 11h4"/></svg>
+        <span lang="tr">Makale</span>
+      </a>
+      <a class="btn" href="https://github.com/aahmetdemir/VFS" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span lang="tr">Kod</span>
+      </a>
+      <a class="btn" href="#cite">BibTeX</a>
+    </div>
+  </header>
+  <section class="col" id="abstract">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">Özet</span></span>
+      <h2><span lang="tr">Deepfake veri setleri için video bazlı gerçekçilik skoru</span></h2>
+    <p class="measure" lang="tr">Deepfake veri setleri ikna edici sahte videolarla bariz olanları aynı etiket altında topluyor. Etiket gerektirmeyen ve her video için ayrı hesaplanan Video Fidelity Score'u (VFS) öneriyoruz. VFS, sahte videonun görüntü kalitesi profilini kaynak videonunkiyle karşılaştırıyor. FaceForensics++, FaceShifter ve Celeb-DF üzerinde VFS sıralamaları hem FID ile hem de insan değerlendirmesiyle uyumlu.</p>
+    </div>
+    <figure class="panel keys-panel">
+    <div class="keys">
+      <div class="key"><span class="num v">0.80–0.87</span><p lang="tr">İnsan iyi/kötü etiketlerine karşı VFS AUC değeri</p></div>
+      <div class="key"><span class="num">0.42–0.58</span><p lang="tr">Ham NR-IQA skorlarının AUC değeri, rastgeleye yakın</p></div>
+      <div class="key"><span class="num">0.97</span><p lang="tr">Veri setleri arasında FID ile en yüksek korelasyon</p></div>
+    </div>
+    </figure>
+  </section>
+  <section class="col" id="method">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">Yöntem</span></span>
+      <h2><span lang="tr">VFS nasıl hesaplanıyor</span></h2>
+      <p class="measure" lang="tr">VFS her sahte videoyu kendi orijinal kaynağıyla karşılaştırıyor. İki videodan alınan 20 karedeki yüzler altı referanssız görüntü kalitesi (NR-IQA) metriğiyle puanlanıyor; Cohen’s <i>d</i> iki skor dağılımının birbirinden ne kadar uzak olduğunu ölçüyor. Düşük VFS daha gerçekçi bir sahte video demek; VFS = 0 kaynaktan ölçülebilir bir fark olmadığını gösteriyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="media w-full"><a href="../assets/img/overview.png" target="_blank" rel="noopener"><img src="../assets/img/overview.png" width="1645" height="648" alt="VFS pipeline: frames from the pristine and fake video are cropped to faces, scored with six NR-IQA metrics, and Cohen's d between the two score distributions gives the Video Fidelity Score."></a></div>
+      <figcaption>
+        <span lang="tr">VFS hesaplama adımları (makaledeki Şekil 1).</span>
+      </figcaption>
+    </figure>
+  </section>
+
+
+
+  <section class="col">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">Örnek</span></span>
+      <h2><span lang="tr">Bir kaynak video, dört manipülasyon</span></h2>
+      <p class="measure" lang="tr">Aynı yüz dört farklı yöntemle manipüle edilmiş. Tüm yüzü değiştiren yöntemlerde (DeepFakes, FaceSwap) belirgin bozulmalar var ve VFS yüksek; ifade değiştiren yöntemler (NeuralTextures, Face2Face) kaynağa yakın kalıyor ve VFS düşük.</p>
+    </div>
+    <figure class="panel">
+      <div class="media w-mid"><a href="../assets/img/video125.jpg" target="_blank" rel="noopener"><img src="../assets/img/video125-sm.jpg" width="1260" height="284" alt="Face from FaceForensics++ video 125 and its DeepFakes, FaceSwap, NeuralTextures and Face2Face versions, with VFS 6.95, 3.41, 1.04 and 0.60." loading="lazy" decoding="async"></a></div>
+      <figcaption>
+        <span lang="tr">FaceForensics++ 125 numaralı video ve manipüle edilmiş sürümleri, MANIQA tabanlı VFS değerleriyle. Belirgin bozulmalar yüksek skorlarla eşleşiyor.</span>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="col">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">Kare düzeyinde skorlar</span></span>
+      <h2><span lang="tr">Her manipülasyon kaynağından ne kadar uzaklaşıyor</span></h2>
+      <p class="measure" lang="tr">Her nokta bir yüz karesinin kalite skoru; aynı kaynak video ve dört manipülasyonu için video başına 20 kare. Skorlar kareden kareye değiştiği için tek bir kare pek bir şey söylemiyor. Asıl bilgi, sahte skor bulutunun orijinal bulutuna göre ne kadar kaydığında: tüm yüzü değiştiren yöntemler (DF, FS) orijinal skorlardan uzakta, ifade değiştirenler (NTX, F2F) ise yakın duruyor. VFS bu kaymayı Cohen’s <i>d</i> ile tek bir sayıya çeviriyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="keyline">
+        <span style="--c:#1f6f5c"><i></i>P <em lang="tr">Orijinal</em></span>
+        <span style="--c:#9b1d4a"><i></i>DF <em>DeepFakes</em></span>
+        <span style="--c:#c0702a"><i></i>FS <em>FaceSwap</em></span>
+        <span style="--c:#5a4a9c"><i></i>NTX <em>NeuralTextures</em></span>
+        <span style="--c:#2f6aa8"><i></i>F2F <em>Face2Face</em></span>
+      </div>
+      <div class="scatter" id="scatter"></div>
+      <figcaption>
+        <span lang="tr">FaceForensics++ 125 numaralı video ve manipüle edilmiş sürümlerinin altı metrikle NR-IQA skorları (↓ düşük daha iyi, ↑ yüksek daha iyi). Makaledeki Şekil 2'den yeniden çizildi; değerler yayımlanan şekilden okundu.</span>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="col">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">En iyi ve en kötü</span></span>
+      <h2><span lang="tr">Gerçekçi kabul edilen veri setlerinde de düşük gerçekçilikli videolar var</span></h2>
+      <p class="measure" lang="tr">Her veri setindeki videoları VFS'e göre sıralamak, ikna edici sahte videoları kusurlu olanlardan ayırıyor; buna Celeb-DF ve FaceForensics++'ın ifade değiştiren alt setleri de dahil.</p>
+    </div>
+    <figure class="panel">
+      <div class="media w-full"><a href="../assets/img/best-worst.jpg" target="_blank" rel="noopener"><img src="../assets/img/best-worst-sm.jpg" width="1520" height="571" alt="Sample faces from the best (HQ) and worst (LQ) VFS groups of DeepFakes, FaceSwap, FaceShifter, NeuralTextures, Face2Face and Celeb-DF." loading="lazy" decoding="async"></a></div>
+      <figcaption>
+        <span lang="tr">Her veri setinin DBCNN tabanlı VFS'e göre en iyi (HQ) ve en kötü (LQ) gruplarından örnekler. Celeb-DF ve ifade değiştiren alt setler bile belirgin kusurlu videolar içeriyor.</span>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="col">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">İnsan değerlendirmesi</span></span>
+      <h2><span lang="tr">İyi ve kötü gerçekçilik setleri</span></h2>
+      <p class="measure" lang="tr">FaceForensics++'ın dört alt setinden 50 ikna edici ve 50 belirgin kusurlu video elle seçildi. VFS bu iki seti 0.87'ye varan AUC ile ayırıyor; ham kalite skorları ayıramıyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="seg" role="group" aria-label="Set">
+        <button type="button" id="set-good" data-img="../assets/img/good-set-sm.jpg" data-full="../assets/img/good-set.jpg" aria-pressed="true" style="--c:var(--good)"><i></i><span lang="tr">İyi gerçekçilik<span class="cnt"> · 50</span></span></button>
+        <button type="button" id="set-bad" data-img="../assets/img/bad-set-sm.jpg" data-full="../assets/img/bad-set.jpg" aria-pressed="false" style="--c:var(--accent)"><i></i><span lang="tr">Kötü gerçekçilik<span class="cnt"> · 50</span></span></button>
+      </div>
+      <div class="media w-set"><a id="set-link" href="../assets/img/good-set.jpg" target="_blank" rel="noopener"><img id="set-img" src="../assets/img/good-set-sm.jpg" width="1100" height="995" alt="Grid of 50 frames from the selected human-evaluation set, each tagged with manipulation method and video ID." loading="lazy" decoding="async"></a></div>
+      <figcaption>
+        <span lang="tr">DF, FS, NTX ve F2F sırasıyla DeepFakes, FaceSwap, NeuralTextures ve Face2Face'i gösteriyor. Tam boyut için görsele tıklayın.</span>
+      </figcaption>
+    </figure>
+  </section>
+  <section class="col">
+    <div class="sec-head">
+      <span class="label">AUC</span>
+      <h2><span lang="tr">VFS setleri ayırıyor, ham skorlar ayıramıyor</span></h2>
+      <p class="measure" lang="tr">Her skorun iyi seti kötü setten ne kadar iyi ayırdığı, ROC eğrisi altındaki alan (AUC) olarak. 0.5 rastgele tahmin demek. Altı metriğin hepsinde VFS 0.80–0.87'ye ulaşıyor (p &lt; 10<sup>−5</sup>); sahte videonun ham skoru ise 0.42–0.58'de kalıyor ve anlamlı bir fark göstermiyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="keyline">
+        <span style="--c:#9b1d4a"><i></i>VFS <em lang="tr">(önerilen)</em></span>
+        <span style="--c:#fff" class="ring"><i></i><em lang="tr">Ham NR-IQA skoru</em></span>
+        <span class="dash"><i></i><em lang="tr">Rastgele (0.5)</em></span>
+      </div>
+      <div id="auc"></div>
+      <figcaption>
+        <span lang="tr">İnsan etiketli setlerde (50 iyi, 50 kötü) AUC; makaledeki Tablo 6 ve 7'den.</span>
+      </figcaption>
+    </figure>
+  </section>
+  <section id="cite" class="col">
+    <div class="sec-head">
+      <span class="label"><span lang="tr">Atıf</span></span>
+      <div class="citehead">
+        <h2><span lang="tr">Bu çalışmaya atıf</span></h2>
+        <button type="button" class="btn" id="copy"><span id="copyl">Copy BibTeX</span></button>
+      </div>
+    </div>
+<pre class="bib" id="bib">@article{demir2026vfs,
+  title   = {Assessing the visual realism of deepfake videos:
+             an IQA-based approach},
+  author  = {Demir, Ahmet and Dirik, Ahmet Emir and Vatansever, Saffet},
+  journal = {PeerJ Computer Science},
+  volume  = {12},
+  pages   = {e3893},
+  year    = {2026},
+  doi     = {10.7717/peerj-cs.3893}
+}</pre>
+  </section>
+</main>
+<footer>
+  <div class="col">
+    <span>© 2026 Demir, Dirik &amp; Vatansever · <a href="https://doi.org/10.7717/peerj-cs.3893" target="_blank" rel="noopener">doi:10.7717/peerj-cs.3893</a></span>
+    <span lang="tr">Yüz görüntüleri FaceForensics++, FaceShifter ve Celeb-DF veri setlerinden alınmıştır ve lisansları kapsamında araştırma amacıyla gösterilmektedir.</span>
+  </div>
+</footer>
+<script src="../assets/main.js?v=20261111204253"></script>
+<script src="../assets/fig2-data.js?v=20261111204253"></script>
+<script src="../assets/charts.js?v=20261111204253"></script>
+</body>
+</html>

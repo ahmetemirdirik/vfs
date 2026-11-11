@@ -1,4 +1,4 @@
-/* VFS project page: language toggle and BibTeX copy. */
+/* VFS project page: BibTeX copy and good/bad set switch. */
 (function () {
   "use strict";
   const root = document.documentElement;
@@ -6,15 +6,8 @@
   let lang = root.getAttribute("data-lang") || "en";
   const t = (en, tr) => (lang === "tr" ? tr : en);
 
-  function setLang(l) {
-    lang = l;
-    root.setAttribute("data-lang", l);
-    root.setAttribute("lang", l);
-    document.querySelectorAll(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === l)));
-    $("#copyl").textContent = t("Copy BibTeX", "BibTeX'i kopyala");
-    try { localStorage.setItem("vfs-lang", l); } catch (e) { /* ignore */ }
-  }
-  document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.set)));
+  // the page language is fixed per page (index.html = en, tr/index.html = tr)
+  $("#copyl").textContent = t("Copy BibTeX", "BibTeX'i kopyala");
 
   $("#copy").addEventListener("click", () => {
     const txt = $("#bib").textContent;
@@ -37,7 +30,6 @@
     $("#set-link").href = b.dataset.full;
   }));
   // warm the second image so switching is instant
-  window.addEventListener("load", () => { const i = new Image(); i.src = "assets/img/bad-set-sm.jpg"; });
+  window.addEventListener("load", () => { const b = document.getElementById("set-bad"); if (b) { const i = new Image(); i.src = b.dataset.img; } });
 
-  setLang(lang);
 })();
