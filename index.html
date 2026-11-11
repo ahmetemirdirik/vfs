@@ -116,6 +116,29 @@
 
   <section class="col">
     <div class="sec-head">
+      <span class="label"><span lang="en">Frame-level scores</span><span lang="tr">Kare düzeyinde skorlar</span></span>
+      <h2><span lang="en">How far each manipulation drifts from its source</span><span lang="tr">Her manipülasyon kaynağından ne kadar uzaklaşıyor</span></h2>
+      <p class="measure" lang="en">Each dot is the quality score of one face crop, 20 frames per video, for the same source video and its four manipulations. Scores move from frame to frame, so a single frame says little. The useful signal is the shift between the whole cloud of fake scores and the pristine one: full-face swaps (DF, FS) sit far from the pristine scores, while expression edits (NTX, F2F) stay close. VFS turns that shift into one number with Cohen’s <i>d</i>.</p>
+      <p class="measure" lang="tr">Her nokta bir yüz karesinin kalite skoru; aynı kaynak video ve dört manipülasyonu için video başına 20 kare. Skorlar kareden kareye değiştiği için tek bir kare pek bir şey söylemiyor. Asıl bilgi, sahte skor bulutunun orijinal bulutuna göre ne kadar kaydığında: tüm yüzü değiştiren yöntemler (DF, FS) orijinal skorlardan uzakta, ifade değiştirenler (NTX, F2F) ise yakın duruyor. VFS bu kaymayı Cohen’s <i>d</i> ile tek bir sayıya çeviriyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="keyline">
+        <span style="--c:#1f6f5c"><i></i>P <em lang="en">Pristine</em><em lang="tr">Orijinal</em></span>
+        <span style="--c:#9b1d4a"><i></i>DF <em>DeepFakes</em></span>
+        <span style="--c:#c0702a"><i></i>FS <em>FaceSwap</em></span>
+        <span style="--c:#5a4a9c"><i></i>NTX <em>NeuralTextures</em></span>
+        <span style="--c:#2f6aa8"><i></i>F2F <em>Face2Face</em></span>
+      </div>
+      <div class="scatter" id="scatter"></div>
+      <figcaption>
+        <span lang="en">NR-IQA scores of FaceForensics++ video #125 and its manipulated versions for six metrics (↓ lower is better, ↑ higher is better). Redrawn from Figure 2 of the paper; values are read from the published figure.</span>
+        <span lang="tr">FaceForensics++ 125 numaralı video ve manipüle edilmiş sürümlerinin altı metrikle NR-IQA skorları (↓ düşük daha iyi, ↑ yüksek daha iyi). Makaledeki Şekil 2'den yeniden çizildi; değerler yayımlanan şekilden okundu.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="col">
+    <div class="sec-head">
       <span class="label"><span lang="en">Best and worst</span><span lang="tr">En iyi ve en kötü</span></span>
       <h2><span lang="en">Low-realism videos hide in every dataset</span><span lang="tr">Her veri setinde gerçekçiliği düşük videolar var</span></h2>
     </div>
@@ -140,10 +163,31 @@
         <button type="button" id="set-good" data-img="assets/img/good-set.jpg" aria-pressed="true" style="--c:var(--good)"><i></i><span lang="en">Good realism · 50</span><span lang="tr">İyi gerçekçilik · 50</span></button>
         <button type="button" id="set-bad" data-img="assets/img/bad-set.jpg" aria-pressed="false" style="--c:var(--accent)"><i></i><span lang="en">Bad realism · 50</span><span lang="tr">Kötü gerçekçilik · 50</span></button>
       </div>
-      <div class="media w-set"><a id="set-link" href="assets/img/good-set.jpg" target="_blank" rel="noopener"><img id="set-img" src="assets/img/good-set.jpg" width="1600" height="1448" alt="Grid of 50 frames from the selected human-evaluation set, each tagged with manipulation method and video ID."></a></div>
+      <div class="media w-full"><a id="set-link" href="assets/img/good-set.jpg" target="_blank" rel="noopener"><img id="set-img" src="assets/img/good-set.jpg" width="1600" height="1448" alt="Grid of 50 frames from the selected human-evaluation set, each tagged with manipulation method and video ID."></a></div>
       <figcaption>
         <span lang="en">DF, FS, NTX and F2F refer to DeepFakes, FaceSwap, NeuralTextures and Face2Face. Click an image to view it at full size.</span>
         <span lang="tr">DF, FS, NTX ve F2F sırasıyla DeepFakes, FaceSwap, NeuralTextures ve Face2Face'i gösteriyor. Tam boyut için görsele tıklayın.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="col">
+    <div class="sec-head">
+      <span class="label">AUC</span>
+      <h2><span lang="en">VFS separates the sets; raw scores do not</span><span lang="tr">VFS setleri ayırıyor, ham skorlar ayıramıyor</span></h2>
+      <p class="measure" lang="en">How well each score tells the good set from the bad set, as area under the ROC curve. 0.5 is chance. With every metric, VFS reaches 0.80–0.87 (p &lt; 10<sup>−5</sup>), while the raw score of the fake video stays at 0.42–0.58 with no significant difference.</p>
+      <p class="measure" lang="tr">Her skorun iyi seti kötü setten ne kadar iyi ayırdığı, ROC eğrisi altındaki alan (AUC) olarak. 0.5 rastgele tahmin demek. Altı metriğin hepsinde VFS 0.80–0.87'ye ulaşıyor (p &lt; 10<sup>−5</sup>); sahte videonun ham skoru ise 0.42–0.58'de kalıyor ve anlamlı bir fark göstermiyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="keyline">
+        <span style="--c:#9b1d4a"><i></i>VFS <em lang="en">(proposed)</em><em lang="tr">(önerilen)</em></span>
+        <span style="--c:#fff" class="ring"><i></i><em lang="en">Raw NR-IQA score</em><em lang="tr">Ham NR-IQA skoru</em></span>
+        <span class="dash"><i></i><em lang="en">Chance (0.5)</em><em lang="tr">Rastgele (0.5)</em></span>
+      </div>
+      <div id="auc"></div>
+      <figcaption>
+        <span lang="en">AUC on the human-labelled sets (50 good, 50 bad) from Tables 6 and 7 of the paper.</span>
+        <span lang="tr">İnsan etiketli setlerde (50 iyi, 50 kötü) AUC; makaledeki Tablo 6 ve 7'den.</span>
       </figcaption>
     </figure>
   </section>
@@ -175,5 +219,7 @@
 </footer>
 
 <script src="assets/main.js"></script>
+<script src="assets/fig2-data.js"></script>
+<script src="assets/charts.js"></script>
 </body>
 </html>
