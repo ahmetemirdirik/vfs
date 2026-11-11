@@ -6,23 +6,130 @@
 <meta name="color-scheme" content="only light">
 <meta name="theme-color" content="#ffffff">
 <title>Video Fidelity Score (VFS) · Assessing the Visual Realism of Deepfake Videos</title>
-<meta name="description" content="Project page for “Assessing the visual realism of deepfake videos: an IQA-based approach” (PeerJ Computer Science, 2026). VFS is an annotation-free, per-video realism score for deepfake videos.">
+<meta name="description" content="Video Fidelity Score (VFS) rates how realistic each deepfake video looks, using image-quality scores and Cohen's d. Paper, code, figures and results.">
 <meta name="author" content="Ahmet Demir, Ahmet Emir Dirik, Saffet Vatansever">
+<meta name="keywords" content="deepfake, visual realism, video fidelity score, VFS, image quality assessment, NR-IQA, FaceForensics++, Celeb-DF, FaceShifter">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://ahmetemirdirik.github.io/vfs/">
+<link rel="alternate" hreflang="en" href="https://ahmetemirdirik.github.io/vfs/?lang=en">
+<link rel="alternate" hreflang="tr" href="https://ahmetemirdirik.github.io/vfs/?lang=tr">
+<link rel="alternate" hreflang="x-default" href="https://ahmetemirdirik.github.io/vfs/">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<!-- Social cards -->
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Video Fidelity Score (VFS)">
+<meta property="og:url" content="https://ahmetemirdirik.github.io/vfs/">
 <meta property="og:title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
-<meta property="og:description" content="Video Fidelity Score (VFS): a per-video realism measure for deepfake datasets. PeerJ Computer Science, 2026.">
+<meta property="og:description" content="Video Fidelity Score (VFS) rates how realistic each deepfake video looks, using image-quality scores and Cohen's d. Paper, code, figures and results.">
 <meta property="og:image" content="https://ahmetemirdirik.github.io/vfs/assets/img/overview.png">
+<meta property="og:image:width" content="1645">
+<meta property="og:image:height" content="648">
+<meta property="og:image:alt" content="VFS pipeline: faces from the pristine and fake video are scored with NR-IQA metrics and compared with Cohen's d.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="article:published_time" content="2026-05-22">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
+<meta name="twitter:description" content="Video Fidelity Score (VFS) rates how realistic each deepfake video looks, using image-quality scores and Cohen's d. Paper, code, figures and results.">
+<meta name="twitter:image" content="https://ahmetemirdirik.github.io/vfs/assets/img/overview.png">
+<!-- Google Scholar -->
 <meta name="citation_title" content="Assessing the visual realism of deepfake videos: an IQA-based approach">
 <meta name="citation_author" content="Demir, Ahmet">
+<meta name="citation_author_institution" content="Bursa Uludağ University">
 <meta name="citation_author" content="Dirik, Ahmet Emir">
+<meta name="citation_author_institution" content="Bursa Uludağ University">
 <meta name="citation_author" content="Vatansever, Saffet">
+<meta name="citation_author_institution" content="Bursa Technical University">
 <meta name="citation_journal_title" content="PeerJ Computer Science">
+<meta name="citation_issn" content="2376-5992">
 <meta name="citation_volume" content="12">
 <meta name="citation_firstpage" content="e3893">
 <meta name="citation_publication_date" content="2026/05/22">
 <meta name="citation_doi" content="10.7717/peerj-cs.3893">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='12' cy='16' r='9' fill='%231f6f5c' fill-opacity='.85'/%3E%3Ccircle cx='20' cy='16' r='9' fill='%239b1d4a' fill-opacity='.85'/%3E%3C/svg%3E">
+<meta name="citation_abstract_html_url" content="https://peerj.com/articles/cs-3893/">
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ScholarlyArticle",
+ "headline": "Assessing the visual realism of deepfake videos: an IQA-based approach",
+ "name": "Assessing the visual realism of deepfake videos: an IQA-based approach",
+ "alternativeHeadline": "Video Fidelity Score (VFS)",
+ "description": "Project page for a PeerJ Computer Science (2026) paper introducing the Video Fidelity Score (VFS), an annotation-free, per-video measure of how realistic a deepfake video looks compared with its source video, based on no-reference image quality assessment (NR-IQA) scores and Cohen's d.",
+ "url": "https://ahmetemirdirik.github.io/vfs/",
+ "image": "https://ahmetemirdirik.github.io/vfs/assets/img/overview.png",
+ "datePublished": "2026-05-22",
+ "inLanguage": "en",
+ "keywords": [
+  "deepfake",
+  "visual realism",
+  "video fidelity score",
+  "VFS",
+  "image quality assessment",
+  "NR-IQA",
+  "FaceForensics++",
+  "Celeb-DF",
+  "FaceShifter",
+  "FID"
+ ],
+ "author": [
+  {
+   "@type": "Person",
+   "name": "Ahmet Demir",
+   "url": "https://avesis.uludag.edu.tr/ahmetdemir",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Uludağ University",
+    "url": "https://uludag.edu.tr"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Ahmet Emir Dirik",
+   "url": "https://avesis.uludag.edu.tr/edirik",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Uludağ University",
+    "url": "https://uludag.edu.tr"
+   }
+  },
+  {
+   "@type": "Person",
+   "name": "Saffet Vatansever",
+   "url": "https://sayfam.btu.edu.tr/en/saffet.vatansever",
+   "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Bursa Technical University",
+    "url": "https://btu.edu.tr"
+   }
+  }
+ ],
+ "isPartOf": {
+  "@type": "PublicationVolume",
+  "volumeNumber": "12",
+  "isPartOf": {
+   "@type": "Periodical",
+   "name": "PeerJ Computer Science",
+   "issn": "2376-5992"
+  }
+ },
+ "pagination": "e3893",
+ "identifier": {
+  "@type": "PropertyValue",
+  "propertyID": "DOI",
+  "value": "10.7717/peerj-cs.3893"
+ },
+ "sameAs": [
+  "https://doi.org/10.7717/peerj-cs.3893",
+  "https://peerj.com/articles/cs-3893/"
+ ],
+ "license": "https://creativecommons.org/licenses/by/4.0/"
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "VFS: Video Fidelity Score", "codeRepository": "https://github.com/aahmetdemir/VFS", "programmingLanguage": ["MATLAB", "Python"], "license": "https://opensource.org/licenses/MIT", "url": "https://github.com/aahmetdemir/VFS"}
+</script>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600&display=swap">

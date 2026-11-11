@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ahmetemirdirik.github.io/vfs/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ahmetemirdirik.github.io/vfs/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://ahmetemirdirik.github.io/vfs/?lang=tr"/>
+    <image:image><image:loc>https://ahmetemirdirik.github.io/vfs/assets/img/overview.png</image:loc></image:image>
+    <image:image><image:loc>https://ahmetemirdirik.github.io/vfs/assets/img/best-worst.jpg</image:loc></image:image>
+    <image:image><image:loc>https://ahmetemirdirik.github.io/vfs/assets/img/video125.jpg</image:loc></image:image>
+  </url>
+</urlset>
