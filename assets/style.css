@@ -51,6 +51,7 @@ p { margin: 0; }
 .authors { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 24px; font-size: 1.05rem; color: var(--fg); }
 .authors a.author { display: inline-flex; align-items: center; gap: 0; color: var(--fg); text-decoration: none; }
 .authors a.author svg { width: 14px; height: 14px; margin-left: 6px; color: #0a66c2; opacity: .85; transition: opacity .15s; }
+.authors a.author svg.web { color: var(--muted); }
 .authors a.author:hover { text-decoration: underline; text-decoration-color: var(--line-strong); }
 .authors a.author:hover svg { opacity: 1; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
