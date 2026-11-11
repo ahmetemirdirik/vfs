@@ -38,3 +38,7 @@ Put these files in a `docs/` folder of that repository. Then in **Settings → P
 - Text: edit `index.html`. Each paragraph has an English (`lang="en"`) and a Turkish (`lang="tr"`) version.
 - Figures: replace files in `assets/img/` (keep the same names).
 - Colors and fonts: the `:root` block at the top of `assets/style.css`.
+
+## Cache
+
+GitHub Pages lets browsers cache CSS/JS for 10 minutes. After changing `assets/*.css` or `assets/*.js`, bump the `?v=` number on their links in `index.html` so visitors get the new files at once.
