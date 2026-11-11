@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=20261111200000">
+<link rel="stylesheet" href="assets/style.css?v=20261111193939">
 <script>
   (function () {
     var l;
@@ -79,31 +79,47 @@
     </div>
   </header>
 
-  <section class="col" style="padding-top:0">
-    <figure class="panel">
-      <div class="media w-full"><a href="assets/img/overview.png" target="_blank" rel="noopener"><img src="assets/img/overview.png" width="1645" height="648" alt="VFS pipeline: frames from the pristine and fake video are cropped to faces, scored with six NR-IQA metrics, and Cohen's d between the two score distributions gives the Video Fidelity Score."></a></div>
-      <figcaption>
-        <span lang="en"><b>Overview.</b> Faces from the pristine and fake video are scored with no-reference image quality (NR-IQA) metrics. The distance between the two score distributions, measured with Cohen’s <i>d</i>, is the Video Fidelity Score. Lower VFS means a more realistic fake.</span>
-        <span lang="tr"><b>Genel bakış.</b> Orijinal ve sahte videodaki yüzler referanssız görüntü kalitesi (NR-IQA) metrikleriyle puanlanıyor. İki skor dağılımı arasındaki fark Cohen’s <i>d</i> ile ölçülüyor ve Video Fidelity Score'u veriyor. Düşük VFS daha gerçekçi bir sahte video demek.</span>
-      </figcaption>
-    </figure>
-  </section>
-
   <section class="col" id="abstract">
-    <div class="sec-head"><span class="label"><span lang="en">Abstract</span><span lang="tr">Özet</span></span></div>
-    <p class="lede measure" lang="en">Deepfake datasets mix convincing fakes with obvious ones under the same label. We propose the Video Fidelity Score (VFS), an annotation-free, per-video realism score that compares the image-quality profile of a fake video with that of its source. Across FaceForensics++, FaceShifter and Celeb-DF, VFS rankings agree with FID and with human judgement.</p>
-    <p class="lede measure" lang="tr">Deepfake veri setleri ikna edici sahte videolarla bariz olanları aynı etiket altında topluyor. Etiket gerektirmeyen ve her video için ayrı hesaplanan Video Fidelity Score'u (VFS) öneriyoruz. VFS, sahte videonun görüntü kalitesi profilini kaynak videonunkiyle karşılaştırıyor. FaceForensics++, FaceShifter ve Celeb-DF üzerinde VFS sıralamaları hem FID ile hem de insan değerlendirmesiyle uyumlu.</p>
+    <div class="sec-head">
+      <span class="label"><span lang="en">Abstract</span><span lang="tr">Özet</span></span>
+      <h2><span lang="en">A per-video realism score for deepfake datasets</span><span lang="tr">Deepfake veri setleri için video bazlı gerçekçilik skoru</span></h2>
+    <p class="measure" lang="en">Deepfake datasets mix convincing fakes with obvious ones under the same label. We propose the Video Fidelity Score (VFS), an annotation-free, per-video realism score that compares the image-quality profile of a fake video with that of its source. Across FaceForensics++, FaceShifter and Celeb-DF, VFS rankings agree with FID and with human judgement.</p>
+    <p class="measure" lang="tr">Deepfake veri setleri ikna edici sahte videolarla bariz olanları aynı etiket altında topluyor. Etiket gerektirmeyen ve her video için ayrı hesaplanan Video Fidelity Score'u (VFS) öneriyoruz. VFS, sahte videonun görüntü kalitesi profilini kaynak videonunkiyle karşılaştırıyor. FaceForensics++, FaceShifter ve Celeb-DF üzerinde VFS sıralamaları hem FID ile hem de insan değerlendirmesiyle uyumlu.</p>
+    </div>
+    <figure class="panel keys-panel">
     <div class="keys">
       <div class="key"><span class="num v">0.80–0.87</span><p lang="en">AUC of VFS against human good/bad labels</p><p lang="tr">İnsan iyi/kötü etiketlerine karşı VFS AUC değeri</p></div>
       <div class="key"><span class="num">0.42–0.58</span><p lang="en">AUC of raw NR-IQA scores, near chance</p><p lang="tr">Ham NR-IQA skorlarının AUC değeri, rastgeleye yakın</p></div>
       <div class="key"><span class="num">0.97</span><p lang="en">Best correlation with FID across datasets</p><p lang="tr">Veri setleri arasında FID ile en yüksek korelasyon</p></div>
     </div>
+    </figure>
   </section>
+
+  <section class="col" id="method">
+    <div class="sec-head">
+      <span class="label"><span lang="en">Method</span><span lang="tr">Yöntem</span></span>
+      <h2><span lang="en">How VFS is computed</span><span lang="tr">VFS nasıl hesaplanıyor</span></h2>
+      <p class="measure" lang="en">VFS compares each fake video with its own pristine source. Faces from 20 frames of both videos are scored with six no-reference image quality (NR-IQA) metrics, and Cohen’s <i>d</i> measures how far apart the two score distributions are. Lower VFS means a more realistic fake; VFS = 0 means no measurable difference from the source.</p>
+      <p class="measure" lang="tr">VFS her sahte videoyu kendi orijinal kaynağıyla karşılaştırıyor. İki videodan alınan 20 karedeki yüzler altı referanssız görüntü kalitesi (NR-IQA) metriğiyle puanlanıyor; Cohen’s <i>d</i> iki skor dağılımının birbirinden ne kadar uzak olduğunu ölçüyor. Düşük VFS daha gerçekçi bir sahte video demek; VFS = 0 kaynaktan ölçülebilir bir fark olmadığını gösteriyor.</p>
+    </div>
+    <figure class="panel">
+      <div class="media w-full"><a href="assets/img/overview.png" target="_blank" rel="noopener"><img src="assets/img/overview.png" width="1645" height="648" alt="VFS pipeline: frames from the pristine and fake video are cropped to faces, scored with six NR-IQA metrics, and Cohen's d between the two score distributions gives the Video Fidelity Score."></a></div>
+      <figcaption>
+        <span lang="en">The VFS pipeline (Figure 1 of the paper).</span>
+        <span lang="tr">VFS hesaplama adımları (makaledeki Şekil 1).</span>
+      </figcaption>
+    </figure>
+  </section>
+
+
+
 
   <section class="col">
     <div class="sec-head">
       <span class="label"><span lang="en">Example</span><span lang="tr">Örnek</span></span>
       <h2><span lang="en">One source video, four manipulations</span><span lang="tr">Bir kaynak video, dört manipülasyon</span></h2>
+      <p class="measure" lang="en">The same face manipulated in four ways. Full-face swaps (DeepFakes, FaceSwap) show visible artifacts and get high VFS; expression edits (NeuralTextures, Face2Face) stay close to the source and get low VFS.</p>
+      <p class="measure" lang="tr">Aynı yüz dört farklı yöntemle manipüle edilmiş. Tüm yüzü değiştiren yöntemlerde (DeepFakes, FaceSwap) belirgin bozulmalar var ve VFS yüksek; ifade değiştiren yöntemler (NeuralTextures, Face2Face) kaynağa yakın kalıyor ve VFS düşük.</p>
     </div>
     <figure class="panel">
       <div class="media w-mid"><a href="assets/img/video125.jpg" target="_blank" rel="noopener"><img src="assets/img/video125.jpg" width="1864" height="420" alt="Face from FaceForensics++ video 125 and its DeepFakes, FaceSwap, NeuralTextures and Face2Face versions, with VFS 6.95, 3.41, 1.04 and 0.60."></a></div>
@@ -141,6 +157,8 @@
     <div class="sec-head">
       <span class="label"><span lang="en">Best and worst</span><span lang="tr">En iyi ve en kötü</span></span>
       <h2><span lang="en">Low-realism videos also appear in well-regarded datasets</span><span lang="tr">Gerçekçi kabul edilen veri setlerinde de düşük gerçekçilikli videolar var</span></h2>
+      <p class="measure" lang="en">Ranking the videos of each dataset by VFS separates convincing fakes from flawed ones, including in Celeb-DF and the expression-editing subsets of FaceForensics++.</p>
+      <p class="measure" lang="tr">Her veri setindeki videoları VFS'e göre sıralamak, ikna edici sahte videoları kusurlu olanlardan ayırıyor; buna Celeb-DF ve FaceForensics++'ın ifade değiştiren alt setleri de dahil.</p>
     </div>
     <figure class="panel">
       <div class="media w-full"><a href="assets/img/best-worst.jpg" target="_blank" rel="noopener"><img src="assets/img/best-worst.jpg" width="2145" height="806" alt="Sample faces from the best (HQ) and worst (LQ) VFS groups of DeepFakes, FaceSwap, FaceShifter, NeuralTextures, Face2Face and Celeb-DF."></a></div>
@@ -193,9 +211,12 @@
   </section>
 
   <section id="cite" class="col">
-    <div class="citehead">
+    <div class="sec-head">
       <span class="label"><span lang="en">Citation</span><span lang="tr">Atıf</span></span>
-      <button type="button" class="btn" id="copy"><span id="copyl">Copy BibTeX</span></button>
+      <div class="citehead">
+        <h2><span lang="en">Cite this work</span><span lang="tr">Bu çalışmaya atıf</span></h2>
+        <button type="button" class="btn" id="copy"><span id="copyl">Copy BibTeX</span></button>
+      </div>
     </div>
 <pre class="bib" id="bib">@article{demir2026vfs,
   title   = {Assessing the visual realism of deepfake videos:
@@ -218,8 +239,8 @@
   </div>
 </footer>
 
-<script src="assets/main.js?v=202611111930"></script>
-<script src="assets/fig2-data.js?v=202611111930"></script>
-<script src="assets/charts.js?v=20261111200000"></script>
+<script src="assets/main.js?v=20261111193914"></script>
+<script src="assets/fig2-data.js?v=20261111193914"></script>
+<script src="assets/charts.js?v=20261111193914"></script>
 </body>
 </html>

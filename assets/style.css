@@ -93,7 +93,8 @@ figcaption b { color: var(--fg); font-weight: 600; }
 @media (max-width: 520px) { .scatter { grid-template-columns: 1fr; } }
 
 /* key numbers */
-.keys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; border: 1px solid var(--line); border-radius: 14px; }
+.keys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.keys-panel { padding: 0; }
 .key { padding: 22px 16px; text-align: center; display: grid; gap: 6px; align-content: start; }
 .key + .key { border-left: 1px solid var(--line); }
 .key .num { font: 500 1.7rem/1 var(--f-body); letter-spacing: -0.01em; color: var(--fg); font-variant-numeric: tabular-nums lining-nums; }
@@ -114,7 +115,7 @@ figcaption b { color: var(--fg); font-weight: 600; }
 }
 
 /* citation */
-.citehead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.citehead { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 pre.bib { margin: 0; background: var(--soft); border-radius: 14px; padding: 20px 24px; font: 0.8rem/1.65 var(--f-code); color: var(--fg); overflow-x: auto; }
 
 footer { margin-top: 64px; border-top: 1px solid var(--line); }
@@ -123,3 +124,4 @@ footer .col { display: grid; gap: 6px; padding-block: 24px 40px; font-size: 0.8r
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
 
 #scatter text, #auc text { font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { pre.bib { white-space: pre-wrap; word-break: break-word; padding: 16px; } }
