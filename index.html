@@ -42,7 +42,7 @@
 <body>
 
 <div class="top">
-  <div class="wide">
+  <div class="col">
     <a class="brand" href="#">VFS</a>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-set="tr">TR</button>
@@ -52,7 +52,7 @@
 </div>
 
 <main>
-  <header class="wrap hero">
+  <header class="col hero">
     <span class="label venue"><b></b>PeerJ Computer Science · 2026<b></b></span>
     <h1>Assessing the visual realism of <em>deepfake</em> videos: an IQA-based approach</h1>
     <div class="authors">
@@ -79,86 +79,76 @@
     </div>
   </header>
 
-  <!-- Overview figure -->
-  <div class="wide">
-    <figure class="teaser">
-      <a class="zoom" href="assets/img/overview.png" target="_blank" rel="noopener"><img src="assets/img/overview.png" width="1645" height="648" alt="VFS pipeline: frames from the pristine and fake video are cropped to faces, scored with six NR-IQA metrics, and Cohen's d between the two score distributions gives the Video Fidelity Score."></a>
+  <section class="col" style="padding-top:0">
+    <figure class="panel">
+      <div class="media w-full"><a href="assets/img/overview.png" target="_blank" rel="noopener"><img src="assets/img/overview.png" width="1645" height="648" alt="VFS pipeline: frames from the pristine and fake video are cropped to faces, scored with six NR-IQA metrics, and Cohen's d between the two score distributions gives the Video Fidelity Score."></a></div>
       <figcaption>
         <span lang="en"><b>Overview.</b> Faces from the pristine and fake video are scored with no-reference image quality (NR-IQA) metrics. The distance between the two score distributions, measured with Cohen’s <i>d</i>, is the Video Fidelity Score. Lower VFS means a more realistic fake.</span>
         <span lang="tr"><b>Genel bakış.</b> Orijinal ve sahte videodaki yüzler referanssız görüntü kalitesi (NR-IQA) metrikleriyle puanlanıyor. İki skor dağılımı arasındaki fark Cohen’s <i>d</i> ile ölçülüyor ve Video Fidelity Score'u veriyor. Düşük VFS daha gerçekçi bir sahte video demek.</span>
       </figcaption>
     </figure>
-  </div>
+  </section>
 
-  <section class="wrap" id="abstract">
+  <section class="col" id="abstract">
     <div class="sec-head"><span class="label"><span lang="en">Abstract</span><span lang="tr">Özet</span></span></div>
-    <p class="lede" lang="en">Deepfake datasets mix convincing fakes with obvious ones under the same label. We propose the Video Fidelity Score (VFS), an annotation-free, per-video realism score that compares the image-quality profile of a fake video with that of its source. Across FaceForensics++, FaceShifter and Celeb-DF, VFS rankings agree with FID and with human judgement.</p>
-    <p class="lede" lang="tr">Deepfake veri setleri ikna edici sahte videolarla bariz olanları aynı etiket altında topluyor. Etiket gerektirmeyen ve her video için ayrı hesaplanan Video Fidelity Score'u (VFS) öneriyoruz. VFS, sahte videonun görüntü kalitesi profilini kaynak videonunkiyle karşılaştırıyor. FaceForensics++, FaceShifter ve Celeb-DF üzerinde VFS sıralamaları hem FID ile hem de insan değerlendirmesiyle uyumlu.</p>
+    <p class="lede measure" lang="en">Deepfake datasets mix convincing fakes with obvious ones under the same label. We propose the Video Fidelity Score (VFS), an annotation-free, per-video realism score that compares the image-quality profile of a fake video with that of its source. Across FaceForensics++, FaceShifter and Celeb-DF, VFS rankings agree with FID and with human judgement.</p>
+    <p class="lede measure" lang="tr">Deepfake veri setleri ikna edici sahte videolarla bariz olanları aynı etiket altında topluyor. Etiket gerektirmeyen ve her video için ayrı hesaplanan Video Fidelity Score'u (VFS) öneriyoruz. VFS, sahte videonun görüntü kalitesi profilini kaynak videonunkiyle karşılaştırıyor. FaceForensics++, FaceShifter ve Celeb-DF üzerinde VFS sıralamaları hem FID ile hem de insan değerlendirmesiyle uyumlu.</p>
     <div class="keys">
-      <div class="key">
-        <span class="num v">0.80–0.87</span>
-        <p lang="en">AUC of VFS against human good/bad labels</p>
-        <p lang="tr">İnsan iyi/kötü etiketlerine karşı VFS AUC değeri</p>
-      </div>
-      <div class="key">
-        <span class="num">0.42–0.58</span>
-        <p lang="en">AUC of raw NR-IQA scores, near chance</p>
-        <p lang="tr">Ham NR-IQA skorlarının AUC değeri, rastgeleye yakın</p>
-      </div>
-      <div class="key">
-        <span class="num">0.97</span>
-        <p lang="en">Best correlation with FID across datasets</p>
-        <p lang="tr">Veri setleri arasında FID ile en yüksek korelasyon</p>
-      </div>
+      <div class="key"><span class="num v">0.80–0.87</span><p lang="en">AUC of VFS against human good/bad labels</p><p lang="tr">İnsan iyi/kötü etiketlerine karşı VFS AUC değeri</p></div>
+      <div class="key"><span class="num">0.42–0.58</span><p lang="en">AUC of raw NR-IQA scores, near chance</p><p lang="tr">Ham NR-IQA skorlarının AUC değeri, rastgeleye yakın</p></div>
+      <div class="key"><span class="num">0.97</span><p lang="en">Best correlation with FID across datasets</p><p lang="tr">Veri setleri arasında FID ile en yüksek korelasyon</p></div>
     </div>
   </section>
 
-  <section class="wide">
-    <div class="sec-head wrap" style="margin-left:0;padding:0">
+  <section class="col">
+    <div class="sec-head">
       <span class="label"><span lang="en">Example</span><span lang="tr">Örnek</span></span>
       <h2><span lang="en">One source video, four manipulations</span><span lang="tr">Bir kaynak video, dört manipülasyon</span></h2>
     </div>
-    <figure>
-      <a class="zoom" href="assets/img/video125.jpg" target="_blank" rel="noopener"><img src="assets/img/video125.jpg" width="1864" height="420" loading="lazy" alt="Face from FaceForensics++ video 125 and its DeepFakes, FaceSwap, NeuralTextures and Face2Face versions, with VFS 6.95, 3.41, 1.04 and 0.60."></a>
-      <figcaption lang="en">FaceForensics++ video #125 and its manipulated versions, with MANIQA-based VFS. Visible artifacts go with high scores.</figcaption>
-      <figcaption lang="tr">FaceForensics++ 125 numaralı video ve manipüle edilmiş sürümleri, MANIQA tabanlı VFS değerleriyle. Belirgin bozulmalar yüksek skorlarla eşleşiyor.</figcaption>
+    <figure class="panel">
+      <div class="media w-mid"><a href="assets/img/video125.jpg" target="_blank" rel="noopener"><img src="assets/img/video125.jpg" width="1864" height="420" alt="Face from FaceForensics++ video 125 and its DeepFakes, FaceSwap, NeuralTextures and Face2Face versions, with VFS 6.95, 3.41, 1.04 and 0.60."></a></div>
+      <figcaption>
+        <span lang="en">FaceForensics++ video #125 and its manipulated versions, with MANIQA-based VFS. Visible artifacts go with high scores.</span>
+        <span lang="tr">FaceForensics++ 125 numaralı video ve manipüle edilmiş sürümleri, MANIQA tabanlı VFS değerleriyle. Belirgin bozulmalar yüksek skorlarla eşleşiyor.</span>
+      </figcaption>
     </figure>
   </section>
 
-  <section class="wide">
-    <div class="sec-head wrap" style="margin-left:0;padding:0">
+  <section class="col">
+    <div class="sec-head">
       <span class="label"><span lang="en">Best and worst</span><span lang="tr">En iyi ve en kötü</span></span>
       <h2><span lang="en">Low-realism videos hide in every dataset</span><span lang="tr">Her veri setinde gerçekçiliği düşük videolar var</span></h2>
     </div>
-    <figure>
-      <a class="zoom" href="assets/img/best-worst.jpg" target="_blank" rel="noopener"><img src="assets/img/best-worst.jpg" width="2145" height="806" loading="lazy" alt="Sample faces from the best (HQ) and worst (LQ) VFS groups of DeepFakes, FaceSwap, FaceShifter, NeuralTextures, Face2Face and Celeb-DF."></a>
-      <figcaption lang="en">Samples from the best (HQ) and worst (LQ) groups of each dataset, ranked by DBCNN-based VFS. Even Celeb-DF and the expression-editing subsets contain clearly flawed videos.</figcaption>
-      <figcaption lang="tr">Her veri setinin DBCNN tabanlı VFS'e göre en iyi (HQ) ve en kötü (LQ) gruplarından örnekler. Celeb-DF ve ifade değiştiren alt setler bile belirgin kusurlu videolar içeriyor.</figcaption>
+    <figure class="panel">
+      <div class="media w-full"><a href="assets/img/best-worst.jpg" target="_blank" rel="noopener"><img src="assets/img/best-worst.jpg" width="2145" height="806" alt="Sample faces from the best (HQ) and worst (LQ) VFS groups of DeepFakes, FaceSwap, FaceShifter, NeuralTextures, Face2Face and Celeb-DF."></a></div>
+      <figcaption>
+        <span lang="en">Samples from the best (HQ) and worst (LQ) groups of each dataset, ranked by DBCNN-based VFS. Even Celeb-DF and the expression-editing subsets contain clearly flawed videos.</span>
+        <span lang="tr">Her veri setinin DBCNN tabanlı VFS'e göre en iyi (HQ) ve en kötü (LQ) gruplarından örnekler. Celeb-DF ve ifade değiştiren alt setler bile belirgin kusurlu videolar içeriyor.</span>
+      </figcaption>
     </figure>
   </section>
 
-  <section class="wide">
-    <div class="sec-head wrap" style="margin-left:0;padding:0">
+  <section class="col">
+    <div class="sec-head">
       <span class="label"><span lang="en">Human evaluation</span><span lang="tr">İnsan değerlendirmesi</span></span>
       <h2><span lang="en">Good and bad realism sets</span><span lang="tr">İyi ve kötü gerçekçilik setleri</span></h2>
-      <p style="max-width:66ch" lang="en">We hand-picked 50 convincing and 50 visibly flawed videos from the four FaceForensics++ subsets. VFS separates the two sets with an AUC of up to 0.87; raw quality scores do not.</p>
-      <p style="max-width:66ch" lang="tr">FaceForensics++'ın dört alt setinden 50 ikna edici ve 50 belirgin kusurlu video elle seçildi. VFS bu iki seti 0.87'ye varan AUC ile ayırıyor; ham kalite skorları ayıramıyor.</p>
+      <p class="measure" lang="en">We hand-picked 50 convincing and 50 visibly flawed videos from the four FaceForensics++ subsets. VFS separates the two sets with an AUC of up to 0.87; raw quality scores do not.</p>
+      <p class="measure" lang="tr">FaceForensics++'ın dört alt setinden 50 ikna edici ve 50 belirgin kusurlu video elle seçildi. VFS bu iki seti 0.87'ye varan AUC ile ayırıyor; ham kalite skorları ayıramıyor.</p>
     </div>
-    <div class="sets">
-      <figure>
-        <span class="set-tag" style="--c:var(--good)"><i></i><span lang="en">Good visual realism</span><span lang="tr">İyi görsel gerçekçilik</span> <span class="n">· 50</span></span>
-        <a class="zoom" href="assets/img/good-set.jpg" target="_blank" rel="noopener"><img src="assets/img/good-set.jpg" width="1600" height="1448" loading="lazy" alt="Grid of 50 frames from videos labelled as having good visual realism, each tagged with manipulation method and video ID."></a>
-      </figure>
-      <figure>
-        <span class="set-tag" style="--c:var(--accent)"><i></i><span lang="en">Bad visual realism</span><span lang="tr">Kötü görsel gerçekçilik</span> <span class="n">· 50</span></span>
-        <a class="zoom" href="assets/img/bad-set.jpg" target="_blank" rel="noopener"><img src="assets/img/bad-set.jpg" width="1600" height="1448" loading="lazy" alt="Grid of 50 frames from videos labelled as having bad visual realism, each tagged with manipulation method and video ID."></a>
-      </figure>
-    </div>
-    <figcaption style="margin-top:14px" lang="en">DF, FS, NTX and F2F refer to DeepFakes, FaceSwap, NeuralTextures and Face2Face. Click an image to view it at full size.</figcaption>
-    <figcaption style="margin-top:14px" lang="tr">DF, FS, NTX ve F2F sırasıyla DeepFakes, FaceSwap, NeuralTextures ve Face2Face'i gösteriyor. Tam boyut için görsele tıklayın.</figcaption>
+    <figure class="panel">
+      <div class="seg" role="group" aria-label="Set">
+        <button type="button" id="set-good" data-img="assets/img/good-set.jpg" aria-pressed="true" style="--c:var(--good)"><i></i><span lang="en">Good realism · 50</span><span lang="tr">İyi gerçekçilik · 50</span></button>
+        <button type="button" id="set-bad" data-img="assets/img/bad-set.jpg" aria-pressed="false" style="--c:var(--accent)"><i></i><span lang="en">Bad realism · 50</span><span lang="tr">Kötü gerçekçilik · 50</span></button>
+      </div>
+      <div class="media w-set"><a id="set-link" href="assets/img/good-set.jpg" target="_blank" rel="noopener"><img id="set-img" src="assets/img/good-set.jpg" width="1600" height="1448" alt="Grid of 50 frames from the selected human-evaluation set, each tagged with manipulation method and video ID."></a></div>
+      <figcaption>
+        <span lang="en">DF, FS, NTX and F2F refer to DeepFakes, FaceSwap, NeuralTextures and Face2Face. Click an image to view it at full size.</span>
+        <span lang="tr">DF, FS, NTX ve F2F sırasıyla DeepFakes, FaceSwap, NeuralTextures ve Face2Face'i gösteriyor. Tam boyut için görsele tıklayın.</span>
+      </figcaption>
+    </figure>
   </section>
 
-  <section id="cite" class="wrap">
+  <section id="cite" class="col">
     <div class="citehead">
       <span class="label"><span lang="en">Citation</span><span lang="tr">Atıf</span></span>
       <button type="button" class="btn" id="copy"><span id="copyl">Copy BibTeX</span></button>
@@ -177,7 +167,7 @@
 </main>
 
 <footer>
-  <div class="wide">
+  <div class="col">
     <span>© 2026 Demir, Dirik &amp; Vatansever · <a href="https://doi.org/10.7717/peerj-cs.3893" target="_blank" rel="noopener">doi:10.7717/peerj-cs.3893</a></span>
     <span lang="en">Face images are from FaceForensics++, FaceShifter and Celeb-DF and are shown for research purposes under their dataset licenses.</span>
     <span lang="tr">Yüz görüntüleri FaceForensics++, FaceShifter ve Celeb-DF veri setlerinden alınmıştır ve lisansları kapsamında araştırma amacıyla gösterilmektedir.</span>

@@ -29,5 +29,15 @@
     try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
   });
 
+  // good / bad human-evaluation set switch
+  const segs = document.querySelectorAll(".seg button");
+  segs.forEach((b) => b.addEventListener("click", () => {
+    segs.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    $("#set-img").src = b.dataset.img;
+    $("#set-link").href = b.dataset.img;
+  }));
+  // warm the second image so switching is instant
+  window.addEventListener("load", () => { const i = new Image(); i.src = "assets/img/bad-set.jpg"; });
+
   setLang(lang);
 })();
