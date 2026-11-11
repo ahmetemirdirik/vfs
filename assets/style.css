@@ -1,5 +1,5 @@
 /* VFS project page — white, minimal, figure-led.
-   One column (960px) for everything; every figure sits in the same framed panel,
+   One column (820px) for everything; every figure sits in the same framed panel,
    so left/right edges line up from top to bottom. */
 :root {
   --bg: #ffffff;
@@ -12,7 +12,7 @@
   --accent: #9b1d4a;
   --good: #1f6f5c;
   --link: #1d3a8a;
-  --col: 960px;
+  --col: 820px;
   --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
   --f-body: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -70,8 +70,8 @@ section { padding-top: 76px; }
 .panel img { display: block; width: 100%; height: auto; margin: 0 auto; }
 /* inner widths chosen so faces appear at similar sizes across figures */
 .w-full a { max-width: 100%; }
-.w-set  a { max-width: 760px; }
-.w-mid  a { max-width: 760px; }
+.w-set  a { max-width: 540px; }
+.w-mid  a { max-width: 620px; }
 figcaption { font-size: 0.86rem; color: var(--muted); line-height: 1.55; border-top: 1px solid var(--line); padding-top: 14px; }
 figcaption b { color: var(--fg); font-weight: 600; }
 @media (max-width: 640px) { .panel { padding: 16px 14px 14px; border-radius: 12px; } }
