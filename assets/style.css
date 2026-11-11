@@ -53,8 +53,6 @@ p { margin: 0; }
 .authors a.author:hover { border-bottom-color: var(--fg); }
 .authors sup, .affil sup { color: var(--muted); font-size: .65em; }
 .affil { display: grid; gap: 1px; font-size: 0.86rem; color: var(--muted); }
-.affil a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); }
-.affil a:hover { color: var(--fg); text-decoration-color: currentColor; }
 .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 0.88rem var(--f-body); padding: 9px 18px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line-strong); color: var(--fg); background: #fff; cursor: pointer; transition: border-color .15s, background .15s; }
 .btn:hover { border-color: var(--fg); }
