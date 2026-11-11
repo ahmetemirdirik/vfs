@@ -4,12 +4,13 @@ Static project page for:
 
 > Demir, A., Dirik, A. E., & Vatansever, S. (2026). *Assessing the visual realism of deepfake videos: an IQA-based approach.* PeerJ Computer Science. https://doi.org/10.7717/peerj-cs.3893
 
-No build step: plain HTML, CSS and JavaScript. Bilingual (TR / EN), with a toggle in the top bar. Add `?lang=tr` or `?lang=en` to a link to choose the language.
+No build step: plain HTML, CSS and a little JavaScript. Bilingual (TR / EN), with a toggle in the top bar. Add `?lang=tr` or `?lang=en` to a link to choose the language.
 
 ```
 index.html          page content (both languages)
 assets/style.css    styles
-assets/main.js      data from the paper's tables, charts, demo
+assets/main.js      language toggle and BibTeX copy
+assets/img/         figures from github.com/aahmetdemir/VFS
 .nojekyll           tells GitHub Pages to serve files as-is
 ```
 
@@ -35,5 +36,5 @@ Put these files in a `docs/` folder of that repository. Then in **Settings → P
 ## Editing
 
 - Text: edit `index.html`. Each paragraph has an English (`lang="en"`) and a Turkish (`lang="tr"`) version.
-- Numbers in the charts: the arrays at the top of `assets/main.js` (Tables 1–7 of the paper).
+- Figures: replace files in `assets/img/` (keep the same names).
 - Colors and fonts: the `:root` block at the top of `assets/style.css`.
