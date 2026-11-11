@@ -34,10 +34,10 @@
   segs.forEach((b) => b.addEventListener("click", () => {
     segs.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     $("#set-img").src = b.dataset.img;
-    $("#set-link").href = b.dataset.img;
+    $("#set-link").href = b.dataset.full;
   }));
   // warm the second image so switching is instant
-  window.addEventListener("load", () => { const i = new Image(); i.src = "assets/img/bad-set.jpg"; });
+  window.addEventListener("load", () => { const i = new Image(); i.src = "assets/img/bad-set-sm.jpg"; });
 
   setLang(lang);
 })();
