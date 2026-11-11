@@ -5,7 +5,7 @@
   const NS = "http://www.w3.org/2000/svg";
   const FONT = "Inter, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
   const MONO = "'IBM Plex Mono', ui-monospace, Menlo, monospace";
-  const C = { fg: "#111418", body: "#30353d", muted: "#6b717c", grid: "#eef0f3", axis: "#cfd3d9" };
+  const C = { fg: "#111418", body: "#30353d", muted: "#4c535e", grid: "#eef0f3", axis: "#cfd3d9" };
   const GROUPS = [
     { k: "P", label: "P", color: "#1f6f5c" },
     { k: "DF", label: "DF", color: "#9b1d4a" },

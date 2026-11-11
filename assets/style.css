@@ -5,8 +5,8 @@
   --bg: #ffffff;
   --soft: #f6f7f9;
   --fg: #111418;
-  --body: #30353d;
-  --muted: #6b717c;
+  --body: #262a31;
+  --muted: #4c535e;
   --line: #e4e7eb;
   --line-strong: #cfd3d9;
   --accent: #9b1d4a;
@@ -32,12 +32,12 @@ h1, h2 { font-family: var(--f-display); font-weight: 500; color: var(--fg); marg
 h2 { font-size: clamp(1.45rem, 2.8vw, 1.8rem); line-height: 1.2; }
 p { margin: 0; }
 .label { font: 500 0.72rem/1.2 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.measure { max-width: 68ch; }
+.measure { max-width: none; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
 /* top bar */
 .top { border-bottom: 1px solid var(--line); }
 .top .col { display: flex; align-items: center; justify-content: space-between; height: 56px; }
-.brand { font: italic 500 1rem var(--f-display); color: var(--fg); text-decoration: none; }
+.brand { font: 600 0.95rem var(--f-body); letter-spacing: 0.06em; color: var(--fg); text-decoration: none; }
 .lang { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px; }
 .lang button { font: 500 0.72rem var(--f-mono); border: 0; background: none; color: var(--muted); padding: 4px 11px; border-radius: 999px; cursor: pointer; }
 .lang button[aria-pressed="true"] { background: var(--fg); color: #fff; }
